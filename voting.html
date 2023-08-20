@@ -16,6 +16,86 @@
         <canvas id="voteChart"></canvas>
     </div>
 
-    <script src="scriptku.js"></script>
+    <script>
+
+        
+  const data = {};
+  const ctx = document.getElementById("voteChart").getContext("2d");
+  
+  function vote() {
+      const nameInput = document.getElementById("nameInput");
+      const name = nameInput.value.toLowerCase();
+  
+      if (name.trim() === "") {
+          alert("Please enter a valid name.");
+          return;
+      }
+  
+      data[name] = data[name] ? data[name] + 1 : 1;
+      updateChart();
+      nameInput.value = "";
+  }
+  
+  function updateChart() {
+      const labels = Object.keys(data);
+      const values = Object.values(data);
+  
+      const chart = new Chart(ctx, {
+          type: "bar",
+          data: {
+              labels: labels,
+              datasets: [{
+                  label: "Votes",
+                  data: values,
+                  backgroundColor: "rgba(75, 192, 192, 0.2)",
+                  borderColor: "rgba(75, 192, 192, 1)",
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true
+                  }
+              }
+          }
+      });
+  }
+  
+    
+
+    </script>
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Social Media Icons</title>
+    </head>
+    <body>
+        <h1>Follow us on social media:</h1>
+        
+        <a href="https://www.facebook.com/yourpage" target="_blank">
+            <img src="facebook-icon.png" alt="Facebook">
+        </a>
+        
+        <a href="https://wa.me/1234567890" target="_blank">
+            <img src="whatsapp-icon.png" alt="WhatsApp">
+        </a>
+        
+        <a href="https://www.instagram.com/yourusername" target="_blank">
+            <img src="instagram-icon.png" alt="Instagram">
+        </a>
+        
+        <a href="https://www.tiktok.com/@yourusername" target="_blank">
+            <img src="tiktok-icon.png" alt="TikTok">
+        </a>
+        
+        <a href="https://www.youtube.com/channel/yourchannel" target="_blank">
+            <img src="youtube-icon.png" alt="YouTube">
+        </a>
+    </body>
+    </html>
+    
+
 </body>
 </html>
