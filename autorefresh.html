@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BRUSTONE AUTO REFRESH</title>
+    <style>
+
+        .kepala {
+            display: flex;
+            text-align: center;
+        }
+
+        .purapuratombol {
+            background-color: goldenrod;
+            color: black;
+            text-align: center;
+            width: 115px;
+            border: 3px 3px 3px solid black;
+            padding: 10px;
+            border-radius: 15px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: cyan
+        }
+        
+        .container {
+            max-width: auto;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: cyan;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #333;
+            background-color: cyan;
+            font-family: Arial, sans-serif;
+        }
+        
+        .hoiya {
+            color: black;
+            background-color: cyan;
+            font-family: Arial, sans-serif;
+        }
+
+        label {
+            font-weight: bold;
+        }
+        
+        input[type="text"], input[type="number"] {
+            padding: 8px;
+            width: 100%;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+
+        .akhiran {
+            background-color: black;
+            color: white;
+            padding: 45px;
+            text-align: center;
+        }
+    </style>
+    
+</head>
+<body>
+    <header>
+
+        <h1>BRUSTONE LOOP</h1>
+        <P class="hoiya"> Segala kesalahan ataupun penggunaan untuk tujuan memperbanyak, maupun menambah jumlah view/tayangan <br> Itu semua tidak diijinkan, jika masih dilakukan , tanggung sendiri akibatnya <br> Use Your Mind Before Using It, Thank You</P>
+
+        <div class="kepala">
+            <a href="index.html" class="purapuratombol">Beranda</a>
+            <a href="mediaku.html" class="purapuratombol">Media Live</a>
+        </div>
+    </header>
+    <div class="container">
+        <label for="websiteUrl">Website URL:</label>
+        <input type="text" id="websiteUrl" value="https://www.example.com" size="50">
+        
+        <label for="refreshTime">Refresh Interval (seconds):</label>
+        <input type="number" id="refreshTime" value="10">
+        
+        <button onclick="startRefresh()">Start Refresh</button>
+        <button onclick="stopRefresh()">Stop Refresh</button>
+    
+        
+        <br><br>
+        <iframe id="websiteFrame" src="https://www.Manusia.com"></iframe>
+    </div>
+    <script>
+        let refreshInterval;
+
+        function startRefresh() {
+            const refreshTime = parseInt(document.getElementById("refreshTime").value) * 1000;
+            const url = document.getElementById("websiteUrl").value;
+
+            clearInterval(refreshInterval);
+            refreshInterval = setInterval(function() {
+                document.getElementById("websiteFrame").src = url;
+            }, refreshTime);
+        }
+
+        function stopRefresh() {
+            clearInterval(refreshInterval);
+        }
+        
+        function clearCacheAndNetwork() {
+            if ('caches' in window) {
+                caches.keys().then(function(names) {
+                    names.forEach(function(name) {
+                        caches.delete(name);
+                    });
+                });
+            }
+
+            navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                registrations.forEach(function(registration) {
+                    registration.unregister();
+                });
+            });
+        }
+        
+        window.onload = function() {
+            startRefresh();
+            clearCacheAndNetwork();
+        };
+    </script>
+    <footer class="akhiran"> Thank You So Much | BrustOne Always With this Owner &copy; Riski Septianto </footer>
+</body>
+</html>

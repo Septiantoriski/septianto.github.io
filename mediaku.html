@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RISKI X MEDIA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: cyan;
+        }
+        header {
+            background-color: cyan;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        footer {
+            background-color: black;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        .iframe-container {
+            position: relative;
+            overflow: hidden;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            transition: height 0.3s ease;
+        }
+        h1 {
+            margin-bottom: 10px;
+            color: black;
+        }
+        .description {
+            margin-bottom: 20px;
+            color: black;
+            text-shadow: cyan 1px ;
+        }
+        #searchContainer {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        #searchInput {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        #searchButton {
+            cursor: pointer;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+        #searchResults {
+            margin-top: 20px;
+        }
+        .searchResult {
+            cursor: pointer;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            color: #333;
+            transition: background-color 0.2s ease;
+        }
+        .searchResult:hover {
+            background-color: #e0e0e0;
+        }
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .controls button {
+            cursor: pointer;
+            padding: 8px 16px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.2s ease;
+        }
+        .controls button:hover {
+            background-color: #222;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>STREAMING</h1>
+        <div class="description">
+            <p>Aku memudahkan apa yang aku bisa tetapi apalah daya materi selalu mengalahkan semuanya || Jika yang terbaik selalu ada maka jadianlah aku ini yang terbaik.</p>
+            <p>Anda dapat kembali ke <a href="index.html">Halaman Utama</a>.</p>
+        </div>
+    </header>
+    <div class="container">
+        <div id="searchContainer">
+            <input type="text" id="searchInput" placeholder="Cari video di YouTube">
+            <button id="searchButton">Cari</button>
+        </div>
+        <div class="iframe-container">
+            <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="controls">
+            <button id="minimizeButton">Minimize</button>
+            <button id="fullscreenButton">Fullscreen</button>
+            <button id="nextButton">Next</button>
+        </div>
+        <div id="searchResults"></div>
+    </div>
+    <footer>
+        Riski Septianto
+    </footer>
+    <script>
+        const searchButton = document.getElementById("searchButton");
+        const searchInput = document.getElementById("searchInput");
+        const videoFrame = document.getElementById("videoFrame");
+        const minimizeButton = document.getElementById("minimizeButton");
+        const fullscreenButton = document.getElementById("fullscreenButton");
+        const nextButton = document.getElementById("nextButton");
+        const searchResultsContainer = document.getElementById("searchResults");
+        const iframeContainer = document.querySelector(".iframe-container");
+
+        searchButton.addEventListener("click", () => {
+            const searchTerm = searchInput.value.trim();
+            if (searchTerm !== "") {
+                fetchVideos(searchTerm);
+            }
+        });
+
+        minimizeButton.addEventListener("click", () => {
+            iframeContainer.style.height = "0";
+        });
+
+        fullscreenButton.addEventListener("click", () => {
+            iframeContainer.style.height = "600px"; // Ganti dengan ukuran yang diinginkan
+        });
+
+        nextButton.addEventListener("click", () => {
+            playNextVideo();
+        });
+
+        videoFrame.addEventListener("ended", () => {
+            playNextVideo();
+        });
+
+        let currentVideoIndex = -1;
+        let searchResults = [];
+
+        function playNextVideo() {
+            currentVideoIndex = (currentVideoIndex + 1) % searchResults.length;
+            playVideoByIndex(currentVideoIndex);
+        }
+
+        function playVideoByIndex(index) {
+            if (index >= 0 && index < searchResults.length) {
+                const videoId = searchResults[index].id;
+                const videoUrl = `https://www.youtube.com/embed/${videoId}`;
+                videoFrame.src = videoUrl;
+            }
+        }
+
+        function fetchVideos(searchTerm) {
+            const apiKey = "AIzaSyCJkDgFtmzsE81_2aCDI5cn06_VqqKWsao"; // Ganti dengan kunci API YouTube Anda
+            const maxResults = 10;
+
+            const apiUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${searchTerm}&key=${apiKey}&maxResults=${maxResults}`;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    searchResults = data.items.map(item => {
+                        return {
+                            id: item.id.videoId,
+                            title: item.snippet.title
+                        };
+                    });
+
+                    const resultsHtml = searchResults.map((result, index) => {
+                        return `
+                            <div class="searchResult" data-video-id="${result.id}" onclick="playVideoByIndex(${index})">
+                                ${result.title}
+                            </div>`;
+                    }).join("");
+
+                    searchResultsContainer.innerHTML = resultsHtml;
+                    playVideoByIndex(0); // Mainkan video pertama saat hasil pencarian diperbarui
+                })
+                .catch(error => {
+                    console.error("Error fetching videos:", error);
+                });
+        }
+    </script>
+</body>
+</html>

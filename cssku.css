@@ -1,0 +1,361 @@
+.responsif{
+  /* Gaya umum */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Gaya untuk konten responsif */
+.responsif {
+  max-width: 800px; /* Maksimum lebar konten */
+  margin: 0 auto; /* Pusatkan konten di tengah */
+  padding: 20px;
+}
+
+/* Media query untuk layar kecil (mobile) */
+@media screen and (max-width: 480px) {
+  .responsif {
+    padding: 10px; /* Padding lebih kecil untuk layar kecil */
+  }
+}
+
+}
+
+.garis-garis {
+  color: navy;
+  background-color: navy;
+}
+
+.container {
+    display: flex; /* Menggunakan flexbox untuk mengatur tata letak */
+    align-items: center; /* Mengatur tata letak vertikal menjadi tengah */
+    background-color: cyan;
+  }
+ 
+  .bodiku {
+    padding: 1px; 
+    margin: 1px;
+    background-color: cyan;
+  }
+
+  .header {
+    background-color: cyan; /* Atur warna latar belakang header sesuai kebutuhan */
+    color: black; /* Atur warna teks header sesuai kebutuhan */
+    padding: 25px; /* Atur ruang padding sesuai kebutuhan */
+  }
+  
+  .header-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-icon {
+    width: 100px; /* Atur ukuran ikon sesuai kebutuhan */
+    height: 100px;
+    margin-right: 1px; /* Beri jarak antara ikon dan judul */
+    border-radius: 45px;
+  }
+  
+  .header-title {
+
+    text-align: center;
+    color: black;
+    font-size: 30px;
+    padding: 1px;
+    margin: 1px;
+    border-color: black;
+    text-shadow: 1px 1px 1px navy;
+    border-radius: 3px;
+    width: 100%;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.5s;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-block;
+    animation: wave-animation 15s infinite;
+    
+    
+      }
+    
+      .header-title span {
+        display: inline-block;
+        animation: wave-single 5s infinite;
+      }
+      
+      .header-title span:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      
+      .header-title span:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .header-title span:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .header-title span:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+
+      .header-title span:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+
+      .header-title span:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+
+      .header-title span:nth-child(7) {
+        animation-delay: 0.7s;
+      }
+
+      .header-title span:nth-child(8) {
+        animation-delay: 0.8s;
+      }
+
+      .header-title span:nth-child(9) {
+        animation-delay: 0.9s;
+      }
+
+      .header-title span:nth-child(10) {
+        animation-delay: 1s;
+      }
+
+      .header-title span:nth-child(11) {
+        animation-delay: 1.1s;
+      }
+
+      .header-title span:nth-child(12) {
+        animation-delay: 1.2s;
+      }
+
+      .header-title span:nth-child(13) {
+        animation-delay: 1.3s;
+      }
+
+      .header-title span:nth-child(14) {
+        animation-delay: 1.4s;
+      }
+
+      .header-title span:nth-child(15) {
+        animation-delay: 1.5s;
+      }
+
+      
+      @keyframes wave-single {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      
+      @keyframes wave-animation {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        25%, 75% {
+          transform: translateY(-10px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+  
+  .dropdown {
+    position: relative;
+    display:inline-block;
+  }
+  
+  .dropdown-button {
+    color: black;
+    background-color: cyan;
+    font-size: 15px;
+    padding: 1px;
+    margin: 1px;
+    border-radius: 2px;
+    width: 100%;
+    text-decoration: none;
+    transition: 0.5s;
+    cursor: pointer;
+    border: 1px solid black;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: pink;
+    width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 1px 1px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: cyan;
+  }
+  
+
+  .side-button {
+    margin-left: 1px; /* Memberi jarak antara tombol dan teks */
+  }
+  
+
+.des1 {
+
+    
+    text-align: center;
+    color:black;
+    font-size: 15px;
+    padding: 10px;
+    margin: 1px;
+    border-radius: 3px;
+    width: 100%;
+    text-decoration: none;
+    transition: 0.5s;
+    cursor: pointer;
+    font-style: arial;
+
+    
+   
+}
+
+
+
+
+.side-button {
+    color: black;
+    background-color: rgb(141, 188, 243);
+    font-size: 15px;
+    padding: 1px;
+    margin: 1px;
+    border-radius: 7px;
+    width:75px;
+    text-decoration: none;
+    transition: 0.5s;
+    cursor: pointer;
+    border: 1px solid black;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    
+
+
+
+}
+
+.side-button:hover {
+    background-color: rgb(63, 145, 240);
+  }
+
+.marquee-text {
+  text-align: center;
+  padding: 45px;
+  margin: 1px;
+  background-color: black;
+  color: white;
+  font-size: 15px;
+}
+
+
+.des{
+  color: black;
+  background-color: cyan;
+  text-align: center;
+  margin: 1px;
+  display: flex;
+
+}
+
+.riwayatpendidikan {
+  text-align: center;
+  width: auto;
+}
+  
+.pps {
+  width: 120px;
+  height: 80px;
+  margin: 1px;
+  border-radius: 45px;
+  background-color: silver;
+
+}
+.pps2 {
+  width: 120px;
+  height: 135px;
+  margin: 1px;
+  border-radius: 45px;
+  background-color: silver;
+}
+  .pps3 {
+    width: 120px;
+    height: 120px;
+    margin: 1px;
+    border-radius: 45px;
+    background-color: silver;
+
+}
+.pps4 {
+  width: 120px;
+  height: 110px;
+  margin: 1px;
+  border-radius: 45px;
+  background-color: silver;
+
+}
+
+.dataini{
+  border-radius: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  padding: 8px;
+  text-align: center;
+  height: 50px;
+  
+}
+th,td {
+  border-radius: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 150px;
+  padding: 8px;
+  text-align: center;
+  color: white;
+  background-color: rgb(18, 139, 175);
+}
+
+.subjudul {
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 5px;
+  color: brown;
+  width: auto;
+  text-shadow:  1px 1px 1px navy;
+
+}
+
+.quote {
+  text-align: center;
+  border-radius: 10px;
+  background-color: rgb(18, 139, 175);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  width: auto;
+  height: auto;
+  padding: 7px;
+
+}
+.footerecoy {
+  padding: 65px;
+  background-color: black;
+}
